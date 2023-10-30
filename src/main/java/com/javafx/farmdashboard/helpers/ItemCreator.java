@@ -38,7 +38,6 @@ public class ItemCreator {
         return createItem(Constants.FARM_WIDTH / 2, Constants.FARM_LENGTH / 2);
     }
 
-
     public static ItemI createItem(double posX, double posY) {
         return createItem(posX, posY, Constants.ItemType.DEFAULT, false);
     }
