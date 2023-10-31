@@ -23,6 +23,7 @@ public class Constants {
         RENAME("Rename"),
         CHANGE_LOCATION("Change Location"),
         CHANGE_PRICE("Change Price"),
+        CHANGE_MARKET_VALUE("Change Market Value"),
         CHANGE_DIMENSIONS("Change Dimensions"),
         ADD_DRONE("Add Drone"),
         ADD_COMMAND_CENTER("Add Command Center"),

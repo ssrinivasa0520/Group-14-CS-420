@@ -34,32 +34,67 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
-                                    <HBox layoutX="141.0" layoutY="220.0" prefHeight="513.6" prefWidth="498.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox prefHeight="513.6" prefWidth="498.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                          <HBox prefHeight="513.6" prefWidth="498.4">
                                              <children>
-                                                <Label alignment="TOP_CENTER" prefHeight="30.0" prefWidth="180.0" text="Items" textAlignment="CENTER">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font>
-                                                </Label>
-                                                <TreeView fx:id="itemView" minWidth="175.0" onMousePressed="#handleItemViewMousePress" prefHeight="419.0" prefWidth="175.0">
-                                                   <contextMenu>
-                                                      <ContextMenu fx:id="commandMenu" />
-                                                   </contextMenu></TreeView>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                                   <children>
+                                                      <Label alignment="TOP_CENTER" prefHeight="30.0" prefWidth="180.0" text="Items" textAlignment="CENTER">
+                                                         <font>
+                                                            <Font size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TreeView fx:id="itemView" minWidth="175.0" onMousePressed="#handleItemViewMousePress" prefHeight="419.0" prefWidth="175.0">
+                                                         <contextMenu>
+                                                            <ContextMenu fx:id="commandMenu" />
+                                                         </contextMenu>
+                                                      </TreeView>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="15.0" right="15.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <TableView fx:id="propertyTableView" prefHeight="514.0" prefWidth="292.0">
+                                                  <columns>
+                                                    <TableColumn fx:id="propertyNameColumn" prefWidth="145.8667083978653" resizable="false" text="Property" />
+                                                    <TableColumn fx:id="propertyValueColumn" prefWidth="146.13330078125" resizable="false" text="Value" />
+                                                  </columns>
+                                                </TableView>
                                              </children>
-                                             <padding>
-                                                <Insets left="15.0" right="15.0" />
-                                             </padding>
+                                          </HBox>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Purchase Price:">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="purchasePriceLabel">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font></Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Current Market Value:">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="currentMarketValueLabel">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font></Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
                                           </VBox>
-                                          <TableView fx:id="propertyTableView" prefHeight="514.0" prefWidth="292.0">
-                                            <columns>
-                                              <TableColumn fx:id="propertyNameColumn" prefWidth="145.8667083978653" resizable="false" text="Property" />
-                                              <TableColumn fx:id="propertyValueColumn" prefWidth="146.13330078125" resizable="false" text="Value" />
-                                            </columns>
-                                          </TableView>
                                        </children>
-                                    </HBox>
+                                    </VBox>
                                  </children>
                               </AnchorPane>
                             <AnchorPane fx:id="droneActionsPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

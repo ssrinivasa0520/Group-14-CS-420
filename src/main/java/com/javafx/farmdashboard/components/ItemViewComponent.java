@@ -6,6 +6,8 @@ import com.javafx.farmdashboard.model.ItemI;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
+import java.util.List;
+
 public class ItemViewComponent {
 
     TreeView<ItemI> itemView;
@@ -36,6 +38,10 @@ public class ItemViewComponent {
     public TreeItem<ItemI> getSelectedTreeItem() { return itemView.getSelectionModel().getSelectedItem(); }
 
     public ItemI getSelectedItem() { return getSelectedTreeItem().getValue(); }
+
+    public List<ItemI> getRootChildren() {
+        return getRootTreeItem().getValue().getChildren();
+    }
 
     public void refresh() {
         itemView.refresh();

@@ -119,6 +119,11 @@ public class PropertyChangeDialogComponent extends HBox {
 
             value1Field.setText(String.valueOf(item.getPrice()));
             value1Label.setText("Price");
+        } else if (Objects.equals(command, Constants.Command.CHANGE_MARKET_VALUE.getName())) {
+            setSecondFieldVisibility(false);
+
+            value1Field.setText(String.valueOf(item.getMarketValue()));
+            value1Label.setText("Market Value");
         }
 
         requestFirstFieldFocus();
@@ -139,6 +144,9 @@ public class PropertyChangeDialogComponent extends HBox {
             } else if (Objects.equals(command, Constants.Command.RENAME.getName())) {
                 return !value1Field.getText().isBlank();
             } else if (Objects.equals(command, Constants.Command.CHANGE_PRICE.getName())) {
+                Double.parseDouble(value1Field.getText());
+                return true;
+            } else if (Objects.equals(command, Constants.Command.CHANGE_MARKET_VALUE.getName())) {
                 Double.parseDouble(value1Field.getText());
                 return true;
             }

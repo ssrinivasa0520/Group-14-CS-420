@@ -51,8 +51,9 @@ public class PropertyTableComponent {
         Property length = new Property("Length", String.format("%.2f", item.getLength()));
         Property width = new Property("Width", String.format("%.2f", item.getWidth()));
         Property price = new Property("Price", String.valueOf(item.getPrice()));
+        Property marketValue = new Property("Market Value", String.valueOf(item.getMarketValue()));
 
-        return List.of(name, x, y, length, width, price);
+        return item.isContainer() ? List.of(name, x, y, length, width, price) : List.of(name, x, y, length, width, price, marketValue);
     }
 
 }

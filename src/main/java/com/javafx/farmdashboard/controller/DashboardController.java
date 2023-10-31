@@ -3,8 +3,7 @@ package com.javafx.farmdashboard.controller;
 import com.javafx.farmdashboard.Application;
 import com.javafx.farmdashboard.components.*;
 import com.javafx.farmdashboard.helpers.CommandExecutor;
-import com.javafx.farmdashboard.helpers.DroneAnimator;
-import com.javafx.farmdashboard.model.Item;
+import com.javafx.farmdashboard.helpers.PurchasePriceVisitor;
 import com.javafx.farmdashboard.model.ItemI;
 import com.javafx.farmdashboard.model.Property;
 import javafx.beans.property.StringProperty;
@@ -52,6 +51,12 @@ public class DashboardController {
     @FXML
     private RadioButton scanFarmRadioButton;
 
+    @FXML
+    private Label purchasePriceLabel;
+
+    @FXML
+    private Label currentMarketValueLabel;
+
     private CommandMenuComponent commandMenuComponent;
 
     private ItemViewComponent itemViewComponent;
@@ -65,6 +70,8 @@ public class DashboardController {
     private final PropertyChangeDialogComponent propertyChangeDialog = new PropertyChangeDialogComponent();
 
     private DroneActionComponent droneActionComponent;
+
+    private PriceLabelComponent priceLabelComponent;
 
     @FXML
     public void initialize() {
@@ -83,7 +90,9 @@ public class DashboardController {
 
         droneComponent = new DroneComponent(drone, itemViewComponent, droneActionComponent);
 
-        commandExecutor = new CommandExecutor(itemViewComponent, propertyTableComponent, farmVisualizationComponent, propertyChangeDialog, droneActionComponent);
+        priceLabelComponent = new PriceLabelComponent(purchasePriceLabel, currentMarketValueLabel, itemViewComponent);
+
+        commandExecutor = new CommandExecutor(itemViewComponent, propertyTableComponent, farmVisualizationComponent, propertyChangeDialog, droneActionComponent, priceLabelComponent);
 
         commandMenuComponent = new CommandMenuComponent(commandMenu, (event) -> {
             String command = ((MenuItem)event.getTarget()).getText();
@@ -105,6 +114,10 @@ public class DashboardController {
         propertyTableComponent.displayProperties(selectedItem);
 
         commandMenuComponent.setView(selectedItem);
+
+        priceLabelComponent.refreshPurchasePrice(selectedItem);
+
+        priceLabelComponent.refreshMarketValue(selectedItem);
 
         visitItemRadioButton.setDisable(!selectedItem.isDefault());
     }

@@ -3,6 +3,7 @@ package com.javafx.farmdashboard.helpers;
 import com.javafx.farmdashboard.Constants;
 import com.javafx.farmdashboard.model.Item;
 import com.javafx.farmdashboard.model.ItemI;
+import com.javafx.farmdashboard.model.ItemLeaf;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,7 @@ public class ItemCreator {
         return Item.builder()
                 .name(isContainer ? "New Item Container" : "New Item")
                 .price(0.0)
+                .marketValue(0.0)
                 .posX(posX)
                 .posY(posY)
                 .length(isContainer ? Constants.CONTAINER_LENGTH : 10.0)

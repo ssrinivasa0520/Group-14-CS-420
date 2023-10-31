@@ -1,6 +1,7 @@
 package com.javafx.farmdashboard.model;
 
 import com.javafx.farmdashboard.Constants;
+import com.javafx.farmdashboard.helpers.VisitorI;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,6 +35,8 @@ public class ItemLeaf implements ItemI {
 
     private Double width;
 
+    private Double marketValue;
+
     public boolean isDefault() {
         return this.type == Constants.ItemType.DEFAULT;
     }
@@ -53,5 +56,9 @@ public class ItemLeaf implements ItemI {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    public @Override double accept(VisitorI visitor) {
+        return visitor.visit(this);
     }
 }

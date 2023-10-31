@@ -19,6 +19,7 @@ public class CommandMenuComponent {
     private final MenuItem RENAME = new MenuItem(Constants.Command.RENAME.getName());
     private final MenuItem CHANGE_LOCATION = new MenuItem(Constants.Command.CHANGE_LOCATION.getName());
     private final MenuItem CHANGE_PRICE = new MenuItem(Constants.Command.CHANGE_PRICE.getName());
+    private final MenuItem CHANGE_MARKET_VALUE = new MenuItem(Constants.Command.CHANGE_MARKET_VALUE.getName());
     private final MenuItem CHANGE_DIMENSIONS = new MenuItem(Constants.Command.CHANGE_DIMENSIONS.getName());
     private final MenuItem DELETE = new MenuItem(Constants.Command.DELETE.getName());
     private final MenuItem ADD_ITEM = new MenuItem(Constants.Command.ADD_ITEM.getName());
@@ -27,11 +28,11 @@ public class CommandMenuComponent {
     private final MenuItem ADD_DRONE = new MenuItem(Constants.Command.ADD_DRONE.getName());
 
     private final List<MenuItem> ALL_COMMANDS = List.of(
-            RENAME, CHANGE_LOCATION, CHANGE_PRICE, CHANGE_DIMENSIONS, DELETE, ADD_ITEM, ADD_ITEM_CONTAINER, ADD_COMMAND_CENTER, ADD_DRONE
+            RENAME, CHANGE_LOCATION, CHANGE_PRICE, CHANGE_DIMENSIONS, CHANGE_MARKET_VALUE, DELETE, ADD_ITEM, ADD_ITEM_CONTAINER, ADD_COMMAND_CENTER, ADD_DRONE
     );
 
     private final List<MenuItem> ITEM_COMMANDS = List.of(
-            RENAME, CHANGE_LOCATION, CHANGE_PRICE, CHANGE_DIMENSIONS, DELETE
+            RENAME, CHANGE_LOCATION, CHANGE_PRICE, CHANGE_MARKET_VALUE, CHANGE_DIMENSIONS, DELETE
     );
 
     private final List<MenuItem> ITEM_CONTAINER_COMMANDS = List.of(

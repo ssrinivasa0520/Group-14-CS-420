@@ -1,6 +1,7 @@
 package com.javafx.farmdashboard.model;
 
 import com.javafx.farmdashboard.Constants;
+import com.javafx.farmdashboard.helpers.VisitorI;
 
 import java.util.List;
 
@@ -46,6 +47,10 @@ public interface ItemI {
 
     public void setWidth(Double width);
 
+    public Double getMarketValue();
+
+    public void setMarketValue(Double marketValue);
+
     public boolean isDefault();
 
     public boolean isFarm();
@@ -53,5 +58,7 @@ public interface ItemI {
     public boolean isCommandCenter();
 
     public boolean isDrone();
+
+    public double accept(VisitorI visitor);
 
 }

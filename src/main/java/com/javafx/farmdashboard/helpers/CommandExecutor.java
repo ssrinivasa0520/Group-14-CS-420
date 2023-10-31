@@ -21,12 +21,15 @@ public class CommandExecutor {
     private final PropertyChangeDialogComponent propertyChangeDialog;
 
     private final DroneActionComponent droneActionComponent;
-    public CommandExecutor(ItemViewComponent itemViewComponent, PropertyTableComponent propertyTableComponent, FarmVisualizationComponent farmVisualizationComponent, PropertyChangeDialogComponent propertyChangeDialog, DroneActionComponent droneActionComponent) {
+
+    private final PriceLabelComponent priceLabelComponent;
+    public CommandExecutor(ItemViewComponent itemViewComponent, PropertyTableComponent propertyTableComponent, FarmVisualizationComponent farmVisualizationComponent, PropertyChangeDialogComponent propertyChangeDialog, DroneActionComponent droneActionComponent, PriceLabelComponent priceLabelComponent) {
         this.itemViewComponent = itemViewComponent;
         this.propertyTableComponent = propertyTableComponent;
         this.farmVisualizationComponent = farmVisualizationComponent;
         this.propertyChangeDialog = propertyChangeDialog;
         this.droneActionComponent = droneActionComponent;
+        this.priceLabelComponent = priceLabelComponent;
     }
 
     public void executeCommand(String command) {
@@ -48,6 +51,8 @@ public class CommandExecutor {
         } else if(Objects.equals(command, Constants.Command.CHANGE_DIMENSIONS.getName())) {
             changeItemProperty(command);
         } else if(Objects.equals(command, Constants.Command.CHANGE_PRICE.getName())) {
+            changeItemProperty(command);
+        } else if(Objects.equals(command, Command.CHANGE_MARKET_VALUE.getName())) {
             changeItemProperty(command);
         }
     }
@@ -134,14 +139,18 @@ public class CommandExecutor {
                 selectedItem.setName(String.valueOf(changedValues.get(0)));
             } else if(Objects.equals(command, Constants.Command.CHANGE_PRICE.getName())) {
                 selectedItem.setPrice(Double.valueOf(changedValues.get(0)));
+            } else if(Objects.equals(command, Command.CHANGE_MARKET_VALUE.getName())) {
+                selectedItem.setMarketValue(Double.valueOf(changedValues.get(0)));
             } else if(Objects.equals(command, Constants.Command.CHANGE_LOCATION.getName())) {
                 changeLocation(selectedItem, Double.parseDouble(changedValues.get(0)), Double.parseDouble(changedValues.get(1)));
             } else if(Objects.equals(command, Constants.Command.CHANGE_DIMENSIONS.getName())) {
                 selectedItem.setLength(Double.valueOf(changedValues.get(0)));
                 selectedItem.setWidth(Double.valueOf(changedValues.get(1)));
             }
+
             refreshTreeView();
             refreshPropertyTable();
+            refreshLabels();
             refreshFarmVisualization();
         }
     }
@@ -174,6 +183,12 @@ public class CommandExecutor {
     public void refreshPropertyTable() {
         ItemI selectedItem = itemViewComponent.getSelectedItem();
         propertyTableComponent.displayProperties(selectedItem);
+    }
+
+    public void refreshLabels() {
+        ItemI selectedItem = itemViewComponent.getSelectedItem();
+        priceLabelComponent.refreshPurchasePrice(selectedItem);
+        priceLabelComponent.refreshMarketValue(selectedItem);
     }
 
     public void refreshFarmVisualization() {
