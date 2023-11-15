@@ -10,6 +10,9 @@ module com.javafx.farmdashboard {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires lombok;
+    requires opencv;
+    requires java.logging;
+    requires java.desktop;
 
     opens com.javafx.farmdashboard to javafx.fxml;
     exports com.javafx.farmdashboard;

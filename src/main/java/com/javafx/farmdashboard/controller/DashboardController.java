@@ -3,7 +3,6 @@ package com.javafx.farmdashboard.controller;
 import com.javafx.farmdashboard.Application;
 import com.javafx.farmdashboard.components.*;
 import com.javafx.farmdashboard.helpers.CommandExecutor;
-import com.javafx.farmdashboard.helpers.PurchasePriceVisitor;
 import com.javafx.farmdashboard.model.ItemI;
 import com.javafx.farmdashboard.model.Property;
 import javafx.beans.property.StringProperty;
@@ -123,12 +122,22 @@ public class DashboardController {
     }
 
     @FXML
-    public void handleStartButtonClicked(MouseEvent event) {
+    public void handleStartSimulationButtonClicked(MouseEvent event) {
         if(scanFarmRadioButton.isSelected()) {
-           droneComponent.scanFarm();
+           droneComponent.simulateScanFarm();
         }
         if (visitItemRadioButton.isSelected() && !visitItemRadioButton.isDisabled()) {
-            droneComponent.visitItem();
+            droneComponent.simulateVisitItem();
+        }
+    }
+
+    @FXML
+    public void handleLaunchDroneButtonClicked(MouseEvent event) {
+        if(scanFarmRadioButton.isSelected()) {
+            droneComponent.physicallyScanFarm();
+        }
+        if (visitItemRadioButton.isSelected() && !visitItemRadioButton.isDisabled()) {
+            droneComponent.physicallyVisitItem();
         }
     }
 }

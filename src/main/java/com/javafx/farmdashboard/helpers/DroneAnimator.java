@@ -2,6 +2,7 @@ package com.javafx.farmdashboard.helpers;
 
 import com.javafx.farmdashboard.Constants;
 import com.javafx.farmdashboard.components.DroneComponent;
+import com.javafx.farmdashboard.controller.TelloDroneController;
 import com.javafx.farmdashboard.model.Coordinates;
 import javafx.animation.KeyValue;
 import javafx.animation.KeyFrame;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DroneAnimator {
+public class DroneAnimator extends TelloDroneController implements TelloDroneAdapter {
 
     private final Node drone;
 
@@ -109,6 +110,7 @@ public class DroneAnimator {
         return sequence;
     }
 
+    @Override
     public void scanFarm(Coordinates finalCoordinates, EventHandler<ActionEvent> onStart, EventHandler<ActionEvent> onFinish) {
         double initPosX = 60;
         double initPosY = 60;
@@ -137,6 +139,7 @@ public class DroneAnimator {
         sequence.setOnFinished(onFinish);
     }
 
+    @Override
     public void visitItem(Coordinates itemCoordinates, EventHandler<ActionEvent> onStart, EventHandler<ActionEvent> onFinish) {
         double initPosX = DroneComponent.droneItem.getPosX() + itemCoordinates.getOffsetX();
         double initPosY = DroneComponent.droneItem.getPosY() + itemCoordinates.getOffsetY();
